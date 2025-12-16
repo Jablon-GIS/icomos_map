@@ -127,7 +127,7 @@
             
             // Find name and type columns
             const nameIndex = headers.findIndex(h => h.includes('name'));
-            const typeIndex = headers.findIndex(h => h.includes('type'));
+            const typeIndex = headers.findIndex(h => h.includes('Description'));
             
             if (latIndex === -1 || lonIndex === -1) {
                 showError('CSV must contain latitude and longitude columns (e.g., "latitude", "longitude" or "lat", "lon")');
