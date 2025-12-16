@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geosearch/3.11.1/geosearch.css" />
     <style>
         body {
             margin: 0;
@@ -63,9 +64,50 @@
         .leaflet-popup-content {
             margin: 10px;
             font-size: 14px;
+            max-width: 250px;
         }
         .leaflet-popup-content b {
             color: #333;
+        }
+        .leaflet-popup-content p {
+            margin: 5px 0;
+        }
+        /* Search box styling */
+        .geosearch {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+        .leaflet-control-geosearch {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .leaflet-control-geosearch input {
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;
+            width: 250px;
+            border-radius: 5px;
+        }
+        .leaflet-control-geosearch input:focus {
+            outline: 2px solid #4CAF50;
+        }
+        .leaflet-control-geosearch .results {
+            background: white;
+            border-radius: 5px;
+            margin-top: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .leaflet-control-geosearch .results > * {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .leaflet-control-geosearch .results > *:hover {
+            background: #f5f5f5;
         }
     </style>
 </head>
@@ -85,6 +127,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geosearch/3.11.1/geosearch.umd.js"></script>
     <script>
         // ============================================
         // CONFIGURATION - EDIT THIS SECTION
@@ -100,6 +143,30 @@
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
         }).addTo(map);
+
+        // Add search control using OpenStreetMap Nominatim (free)
+        const { GeoSearchControl, OpenStreetMapProvider } = window.GeoSearch;
+        
+        const provider = new OpenStreetMapProvider();
+        
+        const searchControl = new GeoSearchControl({
+            provider: provider,
+            style: 'bar',
+            showMarker: true,
+            showPopup: false,
+            marker: {
+                icon: new L.Icon.Default(),
+                draggable: false,
+            },
+            maxMarkers: 1,
+            retainZoomLevel: false,
+            animateZoom: true,
+            autoClose: true,
+            searchLabel: 'Search for an address...',
+            keepResult: true
+        });
+        
+        map.addControl(searchControl);
 
         // Create marker cluster group
         const markers = L.markerClusterGroup({
@@ -121,16 +188,14 @@
         function processCSV(data) {
             const headers = data[0].map(h => h.trim().toLowerCase());
             
-            // Find latitude/longitude columns
-            const latIndex = headers.findIndex(h => h.includes('lat'));
-            const lonIndex = headers.findIndex(h => h.includes('lon') || h.includes('lng'));
-            
-            // Find name and type columns
-            const nameIndex = headers.findIndex(h => h.includes('name'));
-            const typeIndex = headers.findIndex(h => h.includes('Description'));
+            // Find required columns
+            const latIndex = headers.findIndex(h => h === 'lat' || h === 'latitude');
+            const lonIndex = headers.findIndex(h => h === 'lon' || h === 'lng' || h === 'longitude');
+            const nameIndex = headers.findIndex(h => h === 'name');
+            const descIndex = headers.findIndex(h => h === 'description' || h === 'desc');
             
             if (latIndex === -1 || lonIndex === -1) {
-                showError('CSV must contain latitude and longitude columns (e.g., "latitude", "longitude" or "lat", "lon")');
+                showError('CSV must contain "lat" and "lon" columns');
                 return;
             }
 
@@ -146,18 +211,14 @@
 
                 if (isNaN(lat) || isNaN(lon)) continue;
 
-                // Extract name and type
-                const name = nameIndex !== -1 ? row[nameIndex] : 'Unnamed';
-                const type = typeIndex !== -1 ? row[typeIndex] : 'N/A';
+                // Extract name and description
+                const name = nameIndex !== -1 && row[nameIndex] ? row[nameIndex] : 'Unnamed Location';
+                const description = descIndex !== -1 && row[descIndex] ? row[descIndex] : 'No description available';
 
-                // Create popup content with only name and type
+                // Create popup content with name and description
                 let popupContent = '<div>';
-                if (name) {
-                    popupContent += `<b>Name:</b> ${name}<br>`;
-                }
-                if (type) {
-                    popupContent += `<b>Type:</b> ${Description}`;
-                }
+                popupContent += `<p><b>${name}</b></p>`;
+                popupContent += `<p>${description}</p>`;
                 popupContent += '</div>';
 
                 // Add marker to cluster group
