@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 250px;
+        }
+        .info-panel h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .info-panel p {
+            margin: 5px 0;
+            font-size: 13px;
+        }
+        .file-input {
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="file-input">
+        <label for="csvFile">Upload CSV:</label>
+        <input type="file" id="csvFile" accept=".csv">
+    </div>
+    <div class="info-panel">
+        <h3>Map Info</h3>
+        <p id="markerCount">Markers: 0</p>
+        <p style="font-size: 11px; color: #666;">Click markers for details</p>
+    </div>
+    <div class="loading" id="loading">Loading data...</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([0, 0], 2);
+        
+        // Add OpenStreetMap tiles (free)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        let markers = [];
+        let markerLayer = L.layerGroup().addTo(map);
+
+        // Function to clear existing markers
+        function clearMarkers() {
+            markerLayer.clearLayers();
+            markers = [];
+        }
+
+        // Function to process and display CSV data
+        function processCSV(data) {
+            clearMarkers();
+            
+            const headers = data[0].map(h => h.trim().toLowerCase());
+            const latIndex = headers.findIndex(h => h.includes('lat'));
+            const lonIndex = headers.findIndex(h => h.includes('lon') || h.includes('lng'));
+            
+            if (latIndex === -1 || lonIndex === -1) {
+                alert('CSV must contain latitude and longitude columns');
+                return;
+            }
+
+            const bounds = [];
+
+            for (let i = 1; i < data.length; i++) {
+                const row = data[i];
+                if (!row || row.length < 2) continue;
+
+                const lat = parseFloat(row[latIndex]);
+                const lon = parseFloat(row[lonIndex]);
+
+                if (isNaN(lat) || isNaN(lon)) continue;
+
+                // Create popup content
+                let popupContent = '<div style="max-width: 200px;">';
+                headers.forEach((header, index) => {
+                    if (row[index] !== undefined && row[index] !== '') {
+                        popupContent += `<b>${header}:</b> ${row[index]}<br>`;
+                    }
+                });
+                popupContent += '</div>';
+
+                // Add marker
+                const marker = L.marker([lat, lon]).bindPopup(popupContent);
+                markerLayer.addLayer(marker);
+                markers.push(marker);
+                bounds.push([lat, lon]);
+            }
+
+            // Fit map to markers
+            if (bounds.length > 0) {
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+
+            // Update info panel
+            document.getElementById('markerCount').textContent = `Markers: ${markers.length}`;
+        }
+
+        // Handle file upload
+        document.getElementById('csvFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            document.getElementById('loading').style.display = 'block';
+
+            Papa.parse(file, {
+                complete: function(results) {
+                    document.getElementById('loading').style.display = 'none';
+                    processCSV(results.data);
+                },
+                error: function(error) {
+                    document.getElementById('loading').style.display = 'none';
+                    alert('Error parsing CSV: ' + error.message);
+                }
+            });
+        });
+
+        // Optional: Load CSV from URL (for GitHub Pages)
+        // Uncomment and modify this section when you have your CSV hosted
+        /*
+        const csvURL = 'data.csv'; // Replace with your CSV filename
+        document.getElementById('loading').style.display = 'block';
+        
+        Papa.parse(csvURL, {
+            download: true,
+            complete: function(results) {
+                document.getElementById('loading').style.display = 'none';
+                processCSV(results.data);
+            },
+            error: function(error) {
+                document.getElementById('loading').style.display = 'none';
+                console.error('Error loading CSV:', error);
+            }
+        });
+        */
+    </script>
+</body>
+</html>
