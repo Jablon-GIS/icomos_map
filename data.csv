@@ -1,5 +1,4 @@
 ﻿Name;Country;lat;lon;Description
-Western Tombs of the Qing Dynasty; China;0.512862;34.576492;Monument or Site
 Asian Civilisations Museum; Singapore;1.28744635;103.8514861766425;Museum
 National Gallery; Singapore;1.2902557;103.8514709;Museum
 Peranakan Museum; Singapore;1.29429255;103.84908938055555;Museum
@@ -39,7 +38,6 @@ Ban Chiang National Museum; Thailand;17.40778555;103.23577879358153;Museum
 Ban Chiang National Museum; Thailand;17.40778555;103.23577879358153;Museum
 Phra Nakhon Khiri (Phetchaburi) Prasat Mueang Sing (Kanchanaburi) Phu Phrabat (Udon Thani); Thailand;17.4082448;102.7868105;Monument or Site
 Chiang Mai National Museum; Thailand;18.811606349999998;98.97664270451659;Museum
-Eastern Tombs of the Qing Dynasty; China;2.49465;26.270935;Monument or Site
 Chiang Saen National Museum; Thailand;20.2735326;100.0793278;Museum
 Kulangsu; China;24.44724635;118.06189137864911;Monument or Site
 Castello Historic House; Malta;-26.4005303;146.2405565;Monument or Site
@@ -401,3 +399,4 @@ National Museum of Korea (14 locations); Rep. of Korea;7.29334945;80.64214120970
 Thalang National Museum; Thailand;7.9809271;98.3669399;Museum
 Nakhon Si Thammarat Chaiya National Museum; Thailand;8.436241;99.964895;Museum
 Jose Rizal Shrine Dapitan Park and museum; Philippines;8.6674439;123.41728;Museum
+
