@@ -45,7 +45,6 @@
  Australia; The Johnston Collection;Museum;-31.755004;116.001966
  Australia; Western Australian Museum;Museum;-31.949643;115.861906
  Australia; Australian Museum;Museum;-33.8740275;151.2139876
- Rep. of Korea; National Museum of Korea (14 locations) (Free admission to permanent exhibition halls and children's museums);Museum;-34.047092;18.458696
  United States of America; The International Center of Photography;Museum;34.29991;-83.8134
 China;Longmen Grottoes;Monument or Site;34.557115350000004;112.47071118433558
 Japan;Himeji Castle;Monument or Site;34.83943;134.69401
@@ -74,7 +73,6 @@ China;Palace Museum (Beijing);Monument or Site;39.91672;116.39078
  China; Palace Museum (Beijing);Museum;39.91672;116.39078
 China;Mountain Resort and its Outlying Temples, Chengde;Monument or Site;39.9695266;116.30888555281139
 China;Shanhaiguan Great Wall;Monument or Site;39.97161365;119.79490043357765
-France;Tours et trésor de la cathédrale de Chartres;Monument or Site;4.60617;-52.278245
 Armenia;"""Erebuni"" Historical & Archaeological Museum-Reserve";Monument or Site;40.14116;44.53518
 Armenia;"""Zorac Qarer"" Historical & Cultural Reserve";Monument or Site;40.14116;44.53518
  Armenia;" ""Erebuni"" Historical & Archaeological Museum-Reserve";Museum;40.14116;44.53518
@@ -110,7 +108,6 @@ China;Jinshanling Great Wall;Monument or Site;40.684934;117.258806
  United States of America; Isabella Stewart Gardner Museum;Museum;42.33824495;-71.09915382373549
  France; Musée Maillol;Museum;42.46605445;3.106548800689432
  United States of America; Peabody Essex Museum;Museum;42.52159245;-70.89219314752947
- France; Musées et domaine nationaux du Palais impérial de Compiègne;Museum;43.0024;1.13815
 France;Cloître de la cathédrale Notre-Dame du Puy-en-Velay;Monument or Site;43.1216875;5.934033526880076
 Australia;Port Arthur Historic Sites;Monument or Site;-43.14731205;147.8474032297292
 France;Château d'If;Monument or Site;43.283586;5.352025
@@ -120,12 +117,9 @@ France;Château d'If;Monument or Site;43.283586;5.352025
  France; Musée national Marc Chagall,  Nice;Museum;43.7062629;7.1923789
  Italy; Uffizi Gallery;Museum;43.76773;11.25649
 Croatia;Zadar Church of St. Donatus;Monument or Site;44.11584525;15.224375146541785
-France;Arc de triomphe;Monument or Site;44.142174600000004;4.804810889507216
  Croatia; Nin Museum of Antiquities;Museum;44.2433525;15.1841274
  Italy; Galleria Nazionale d'Arte Moderna;Museum;44.3821984;9.0456947
  France; Musée national de Préhistoire,  Les-Eyzies-de-Tayac;Museum;44.936253;1.013575
- France; Petit Palais;Museum;44.9809417;-0.0630624
-United States of America;Monticello;Monument or Site;45.3053901;-93.7939996
  Canada; Musée des Beaux-Arts du Canada à Ottawa;Museum;45.429526300000006;-75.69881245158095
  Italy; Peggy Guggenheim Collection;Museum;45.430796;12.331693
 France;Château de Villeneuve-Lembron;Monument or Site;45.47805255;3.1860138985880067
@@ -135,7 +129,6 @@ France;Château d'Aulteribe;Monument or Site;45.775081;3.498855
  Croatia; Zagreb Museum of contemporary art;Museum;45.77877155;15.981860103301784
  Croatia; Zagreb Museum of Arts and Crafts;Museum;45.80941665;15.968528072225027
  Croatia; Zadar Archaeological Museum;Museum;45.81103;15.97733
-France;Sainte-Chapelle;Monument or Site;45.894701;3.117166
 France;Monastère royal de Brou, Bourg-en-Bresse;Monument or Site;46.1976337;5.2362899312283755
 France;Château de Voltaire, Ferney-Voltaire;Monument or Site;46.257403499999995;6.103599768308085
 France;Château de Chareil-Cintrat;Monument or Site;46.2610209;3.231769
@@ -154,8 +147,6 @@ France;Château d'Azay-le-Rideau;Monument or Site;47.25904985;0.465756301165524
  France; Musée Magnin,  Dijon;Museum;47.3209486;5.0422275
 France;Cloître de la Psalette, Tours;Monument or Site;47.3958664;0.6940454493563322
 Austria;Lichtenstein Palace;Monument or Site;47.405351;15.273001
-France;Tours de la cathédrale Notre-Dame;Monument or Site;47.4081459;0.969586
-France;Tours de la cathédrale d'Amiens;Monument or Site;47.4081459;0.969586
 France;Château de Fougères-sur-Bièvre;Monument or Site;47.447663399999996;1.3439683550638857
 France;Château de Bussy-Rabutin;Monument or Site;47.561404;4.523503
 France;Site des mégatithes de Locmariaquer;Monument or Site;47.5717694;-2.9512493
@@ -166,11 +157,9 @@ France;Château de Châteaudun;Monument or Site;48.0707482;1.3233275682327954
  France; Fondation Le Corbusier (Maison La Roche and Le Corbusier's Apartment-studio);Museum;48.267559;0.858251
 France;Château de Fontainebleau;Monument or Site;48.402116649999996;2.6998510246573746
 France;Château de La Motte-Tilly;Monument or Site;48.46714875;3.4314546318272585
- France; Musée de l'Orangerie;Museum;48.59173;7.774478290420051
 France;Abbaye du Mont-Saint-Michel;Monument or Site;48.6360234;-1.511480984960727
 France;Château de Rambouillet;Monument or Site;48.6454127;1.8173243974419067
 France;Cairn de Barnenez;Monument or Site;48.667548;-3.858497
-France;Conciergerie;Monument or Site;48.6798946;6.181479473165966
 France;Domaine des Granges de Port Royal, Magny-les-Hameaux;Monument or Site;48.724051;2.0839562
 France;Maison d'Ernest Renan, Tréguier;Monument or Site;48.78793195;-3.22909792657614
 France;Château de Versailles;Monument or Site;48.804425249999994;2.120285270992599
@@ -195,15 +184,12 @@ France;Château de Champs-sur-Marne;Monument or Site;48.853668049999996;2.604081
 France;Arc de triomphe de l'Étoile;Monument or Site;48.873763;2.295026
  France; Fondation Louis Vuitton;Museum;48.874029;2.297028
  France; Musée Nissim de Camondo;Museum;48.879352;2.312181
- France; Musée de la musique (Cité de la musique);Museum;48.893738;7.903088
  France; Musée d'archéologie nationale,  château de Saint-Germain-en-Laye;Museum;48.897904499999996;2.09560349002016
 France;Villa Savoye, Poissy;Monument or Site;48.924429450000005;2.0282809317203814
 France;Basilique cathédrale de Saint-Denis;Monument or Site;48.9325223;2.3572629
 France;Château de Maisons-Laffitte;Monument or Site;48.9472262;2.153903669969626
  France; Musée national de la Renaissance,  château d'Ecouen;Museum;49.027865;2.365732
- France; Musée du Quai Branly;Museum;49.051172;7.434894
 France;Village de Giverny;Monument or Site;49.0643188;1.5477204
-France;Les Catacombes;Monument or Site;49.132986;2.568684
  France; Musée Jacquemart-André;Museum;49.148092;2.68537
  Czech Republic; National Gallery;Museum;49.18720315;16.61618214998997
 France;Palais du Tau, Reims;Monument or Site;49.25326235;4.034537210053816
@@ -211,7 +197,6 @@ France;Palais du Tau, Reims;Monument or Site;49.25326235;4.034537210053816
 France;Château de Pierrefonds;Monument or Site;49.34696735;2.9797367135535255
  France; Musée de la coopération franco-américaine,  Blérancourt;Museum;49.5171443;3.1517532
 France;Château de Coucy;Monument or Site;49.5218263;3.3185631651794254
- France; Musée du Moyen Age - Cluny;Museum;49.630752;-1.565226
 Czech Republic;Spanish Synagogue;Monument or Site;50.0903589;14.420847326686296
 France;Tours de la cathédrale de Reims;Monument or Site;50.411308;2.916235
  France; Grand Palais;Museum;50.6302281;3.0774233
@@ -222,7 +207,6 @@ Germany;Pillnitz palace;Monument or Site;51.008161;13.870534
  Netherlands; Van Gogh Museum;Museum;51.4772107;5.5512275
  United Kingdom; Tate Britain;Museum;51.4911182;-0.12781878350367853
  United Kingdom; Royal Academy of Arts;Museum;51.5092768;-0.13973813543557267
- United Kingdom; British Museum;Museum;51.9462814;-0.2757955
 Germany;Palaces and Parks of Potsdam;Monument or Site;52.3158328;13.0942736
  Netherlands; Rijksmuseum Amsterdam;Museum;52.3598431;4.8850394507194235
  Netherlands; Museum Het Schip (Amsterdamse School);Museum;52.3904885;4.8737264
@@ -267,3 +251,4 @@ Estonia;Haapsalu Castle;Monument or Site;58.9470189;23.5394733
  Thailand; Nakhon Si Thammarat National Museum, ;Museum;8.4004304;99.9695593
  Philippines; Jose Rizal Shrine Dapitan Park and museum;Museum;8.6674439;123.41728
  Thailand; Chaiya National Museum, Chaiya, Surat Thani;Museum;9.3858077;99.1964728
+
